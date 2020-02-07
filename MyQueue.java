@@ -12,7 +12,8 @@
  *
  * Also, the following can be done: for dequeue = push2 pop push1 and enqueue = just push1
  * Here, for dequeue = pop if not empty, enqueue = push if not empty; and dump values to another stack if one of them empty
- */
+ *  Here, the amortized time is O(1) for push and pop. worst is O(n) and best is O(1)
+*/
 public class MyQueue<T> {
     private Stack<T> enStack = new Stack<T>();
     private Stack<T> deStack = new Stack<T>();
