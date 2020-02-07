@@ -9,6 +9,8 @@
  * During pop of main stack, compare the min val,
  *    if its same, then pop the min stack too
  *
+ * Another approach is to create a stack with Node containing the min value of the substack, looking like this: 
+ * Node { Node next; int data; Node minSubStack; } 
  * **  */
 
 import java.lang.Integer;
