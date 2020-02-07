@@ -43,12 +43,13 @@ public class StackMin {
             Integer data = mainStack.pop();
             if (min.compareTo(data) == 0) {
                  minValStack.pop();
+                 //check if not empty before this operation
                  min = minValStack.peek();
             }
             return data;
         }
         //exception handling for empty stack..
-        return 1004200001 ;
+        return Integer.MAX_VALUE ;
     }
 
     // testing...
