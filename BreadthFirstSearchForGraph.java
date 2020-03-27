@@ -2,9 +2,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /*
-create an undirected graph with adjacency list representation
- */
-public class Graph {
+    create an undirected graph with adjacency list representation
+     */
+public class BreadthFirstSearchForGraph {
+
+
     private AdjNodeList[] vertices;
 
     //create an array with value true if visited
@@ -36,7 +38,7 @@ public class Graph {
         }
     }
 
-    Graph(int numOfV) {
+    BreadthFirstSearchForGraph(int numOfV) {
         vertices = new AdjNodeList[numOfV]; // vertices named from 0 to numOfV-1
         for (int i = 0; i < numOfV; i++) {
             vertices[i] = new AdjNodeList();
@@ -49,75 +51,6 @@ public class Graph {
     public void addEdge(int v1, int v2) {
         vertices[v1].insertNode(v2);
         vertices[v2].insertNode(v1);
-    }
-
-    public void printVertices() {
-        System.out.println("The vertices of the graph are: ");
-        int i = 0;
-        while (i < vertices.length) {
-            System.out.print(i + " ");
-            i++;
-        }
-        System.out.println("");
-
-    }
-
-    public void printEdges() {
-
-        System.out.println("The vertices and their corresponding edges for the graph are: ");
-        int i = 0;
-        for (AdjNodeList n : vertices
-        ) {
-            System.out.print("Vertex " + i + "'s Edges to: ");
-            AdjNodeList.Node tmp = n.head;
-            while (tmp != null) {
-                System.out.print(tmp.vertex + " ");
-                tmp = tmp.next;
-            }
-            System.out.println("");
-            i++;
-        }
-
-
-        System.out.println("");
-
-    }
-
-    public void DFS() {
-
-        visited = new boolean[vertices.length];
-        for (int vertex = 0; vertex < visited.length; vertex++) {
-            if (!visited[vertex]) {
-                System.out.println("Start index: " + vertex);
-                DFSTraverse(vertex);
-            }
-        }
-
-
-    }
-
-    private void DFSTraverse(int start_vertex) {
-        //base condition - return if already visited
-        if (visited[start_vertex]) {
-            return;
-        }
-
-        System.out.println(start_vertex);
-        visited[start_vertex] = true;
-        //for a given start vertex
-        AdjNodeList adjList = vertices[start_vertex];
-
-        //choose one of its adjacent vertex, choose first in list
-        AdjNodeList.Node tmp = adjList.head;
-        //call DFS in a loop
-        while (tmp != null) {
-            if (!visited[tmp.vertex]) {
-
-                DFSTraverse(tmp.vertex);
-            }
-            tmp = tmp.next;
-        }
-
     }
 
     public void BFS() {
@@ -155,7 +88,7 @@ public class Graph {
 
     public static void main(String[] args) {
         int numOfV = 20;
-        Graph oGF = new Graph(20);
+        BreadthFirstSearchForGraph oGF = new BreadthFirstSearchForGraph(20);
         //for the current implementation don't add duplicate edges or parallel edges
         oGF.addEdge(1, 2);
         oGF.addEdge(4, 2);
@@ -191,3 +124,5 @@ public class Graph {
         oGF.BFS();
     }
 }
+
+
