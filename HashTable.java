@@ -80,46 +80,45 @@ public class HashTable {
                 insert(tempHash[i]);
             }
         }
-        System.out.println("Rehashing completed.");
-        printStatus();
+        System.out.println("Rehashing completed...");
     }
 
     void printStatus() {
 
-        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("Hash Table size: " + tableSize);
         System.out.println("Number of text inputs: " + textCount);
         System.out.println("Load factor: " + getLoadFactor());
-        System.out.println("Number of collisions occurred: " + totalCollisions);
-        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("Total number of collisions occurred: " + totalCollisions);
+        System.out.println("--------------------------------------------------------------------------");
 
     }
 
     void printInsertStatus() {
 
-        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("Inserting text into hash table...");
-        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
         System.out.println("|        Text        | Stored at index | Load Factor | No. of collisions |");
-        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------");
     }
 
     public static void main(String[] args) throws Exception {
-        //provide pathname from args
-        // args[0] = path
-         /*
-    Pick 20 random words.  Each word must be of different lengths, maximum length 8 and minimum length 3.
-    The words will be of letters a-zA-Z and the space character.
-    */
-        File inputTexts = new File("/home/manasa01/IdeaProjects/Btree/src/HashStrings");
+        /*
+        Requirement: Pick 20 random words.  Each word must be of different lengths, maximum length 8 and minimum length 3.
+        The words will be of letters a-zA-Z and the space character.
+        */
+        String pathname = args[0];
+        File inputTexts = new File(pathname); // pathname must contain the COMPLETE path of the file
         BufferedReader br = new BufferedReader(new FileReader(inputTexts));
         HashTable ht = new HashTable();
+        //insert the 20 words into the hash table
         ht.printInsertStatus();
         String text;
         while ((text = br.readLine()) != null) {
             ht.insert(text);
         }
-
+        ht.printStatus();
     }
 }
 
